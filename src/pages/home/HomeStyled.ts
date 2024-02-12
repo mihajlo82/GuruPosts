@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 const HomeLayout = styled.section`
   width: 100vw;
-  background-color: orange;
 `;
 
 const HomeContainer = styled.section`

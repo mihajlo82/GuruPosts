@@ -6,9 +6,9 @@ const FooterLayout = styled.section`
   justify-content: center;
   align-items: center;
   height: 5vh;
-  background-color: green;
+  color: green;
   font-weight: 600;
-  color: white;
+  margin-top: 25px; 
 `;
 
 export { FooterLayout };

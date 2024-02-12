@@ -11,6 +11,7 @@ const useHome = () => {
   const [errorPosts, setErrorPosts] = useState<boolean>(false);
   const [loader, setLoader] = useState<boolean>(true);
   const [debouncedSearch] = useDebounce(searchString, 300);
+  
   const searchForPosts = async () => {
     setLoader(true);
     const filteredPosts = await apiService.searchPostsAndUsers(searchString);
@@ -28,7 +29,6 @@ const useHome = () => {
   }, [debouncedSearch]);
 
   return {
-    searchForPosts,
     posts,
     loader,
     errorPosts,
