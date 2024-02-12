@@ -6,9 +6,11 @@ const HeaderLayout = styled.section`
   display: flex;
   align-items: center;
   height: 10vh;
-  background-color: #3dba6f;
-`;
+  background-color: #1d7841 ;
 
+  `;
+  
+  // background-color: #3dba6f;
 const LogoContainer = styled.article`
   width: 40%;
   height: 100%;

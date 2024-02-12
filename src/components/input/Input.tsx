@@ -3,25 +3,20 @@ import styled from "styled-components";
 const InputLayout = styled.input`
   height: 33px;
   border-radius: 5px;
-  width: 40%;
+  width: 33%;
   padding: 10px 15px;
-  border: 2px solid #3dba6f;
+  border: 2px solid green;
   outline: none;
 `;
 
 interface IInputProp {
   placeholder: string;
   type: string;
-  value: string;
-  onChangeHandler: (e:any) => void;
+  value: string | number;
+  onChangeHandler: (e: any) => void;
 }
 
-const Input = ({
-  placeholder,
-  type,
-  value,
-  onChangeHandler,
-}: IInputProp) => {
+const Input = ({ placeholder, type, value, onChangeHandler }: IInputProp) => {
   return (
     <InputLayout
       type={type}
@@ -33,3 +28,9 @@ const Input = ({
 };
 
 export default Input;
+Input.defaultProps = {
+  placeholder: "Enter a value",
+  type: "text",
+  value: "",
+  onChangeHandler: () => {},
+};

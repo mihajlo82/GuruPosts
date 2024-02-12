@@ -5,3 +5,6 @@ const BodyLayout = ({ children }: any) => {
 };
 
 export default BodyLayout;
+BodyLayout.defaultProps = {
+  children: <div></div>,
+};

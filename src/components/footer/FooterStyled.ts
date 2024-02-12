@@ -5,8 +5,8 @@ const FooterLayout = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 10vh;
-  background-color: #3dba6f;
+  height: 5vh;
+  background-color: green;
   font-weight: 600;
   color: white;
 `;

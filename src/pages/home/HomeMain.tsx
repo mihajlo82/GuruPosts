@@ -1,34 +1,21 @@
 import { BodyLayout } from "@/components/bodyLayout/BodyLayoutStyled";
-import { Api } from "@/services/Api";
-import { useState, useEffect } from "react";
 import SinglePoster from "./SinglePoster";
-import { ISingePost } from "@/utils/types/types";
-import { useDebounce } from "use-debounce";
+import { ISingePost } from "@/utils/types/typesHome";
 import Input from "@/components/input/Input";
-
-const apiService = new Api();
+import Loader from "@/components/loader/Loader";
+import useHome from "./customHook/useHome"; 
 
 const HomeMain = () => {
-  const [posts, setPosts] = useState<ISingePost[]>([]);
-  const [searchString, setSearchString] = useState<string>("");
-  const [debouncedSearch] = useDebounce(searchString, 300);
-  const [errorPosts, setErrorPosts] = useState<boolean>(false);
-
-  const searchForPosts = async () => {
-    const filteredPosts = await apiService.searchPostsAndUsers(searchString);
-    if (!filteredPosts) {
-      setErrorPosts(true);
-    } else {
-      setPosts(filteredPosts);
-    }
-  };
-
-  useEffect(() => {
-    searchForPosts();
-  }, [debouncedSearch]);
+  const { 
+    posts,
+    loader,
+    errorPosts,
+    searchString,
+    setSearchString,
+  } = useHome();
 
   const handlePosts = () => {
-    if (posts.length === 0) {
+    if (posts.length === 0 && !loader) {
       return <p>Data No Found!</p>;
     } else {
       return posts.map((post: ISingePost) => (
@@ -49,9 +36,8 @@ const HomeMain = () => {
         }
       />
       {handlePosts()}
-      {/* {posts.map((post: ISingePost) => (
-        <SinglePoster key={post.id} post={post} />
-      ))} */}
+
+      {loader && <Loader />}
     </BodyLayout>
   );
 };

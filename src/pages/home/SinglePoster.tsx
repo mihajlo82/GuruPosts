@@ -1,42 +1,20 @@
-import { useState } from "react";
-import { ISingePost } from "@/utils/types/types";
+import { ISingePost } from "@/utils/types/typesHome";
 import { Button } from "@/components/button/Button";
-import { Api } from "@/services/Api";
 import PostComments from "./PostComments";
 import * as S from "./HomeStyled";
-import { useNavigate } from "react-router-dom";
-
-const apiService = new Api();
+import useSinglePoster from "./customHook/useSinglePoster";
 
 interface ISinglePoster {
   post: ISingePost;
 }
 
 const SinglePoster = ({ post }: ISinglePoster) => {
-  const [showComments, setShowComments] = useState<boolean>(false);
-  const [comments, setComments] = useState([]);
-  const navigate = useNavigate();
-
-  const fetchCommentsFromPost = async (postId: number) => {
-    const postComments = await apiService.getCommentsFromPost(postId); 
-    setComments(postComments);
-  };
-
-  const showCommentsHandler = (e: any) => {
-    e.stopPropagation();
-
-    if (!showComments) {
-      fetchCommentsFromPost(post.id);
-    }
-    setShowComments((prev) => !prev);
-  };
-
-  const proceedToSinglePost = () => {
-    navigate(`/posts/${post.id}`);
-  };
+  const { showComments, comments, proceedToSinglePost, showCommentsHandler } =
+    useSinglePoster(post);
 
   const handleComments = () => {
-    if (showComments && !comments) return <p>No comments...</p>;
+    if (showComments && (!comments || !comments[0]?.id))
+      return <p>No comments...</p>;
     else if (showComments && comments?.length > 0 && !!comments) {
       return <PostComments comments={comments} />;
     }
@@ -63,3 +41,10 @@ const SinglePoster = ({ post }: ISinglePoster) => {
 };
 
 export default SinglePoster;
+SinglePoster.defaultProps = {
+  body: "",
+  id: 0,
+  title: "",
+  user: { name: "" },
+  userId: 0,
+};

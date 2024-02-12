@@ -1,4 +1,4 @@
-import { IComment } from "@/utils/types/types";
+import { IComment } from "@/utils/types/typesHome";
 import * as S from "./HomeStyled";
 
 interface IPostComment {
@@ -23,3 +23,6 @@ const PostComments = ({ comments }: IPostComment) => {
 };
 
 export default PostComments;
+PostComments.defaultProps = {
+  comments: []
+}

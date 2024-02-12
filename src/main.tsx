@@ -1,5 +1,3 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
 import "./index.css";
 import { createRoot } from "react-dom/client";
 import {
@@ -7,10 +5,7 @@ import {
   RouterProvider,
   Navigate,
 } from "react-router-dom";
-import HomeScreen from "./pages/home/HomeScreen.tsx";
-import PhotosScreen from "./pages/photos/PhotosScreen.tsx";
-import ErrorScreen from "./pages/error/ErrorScreen.tsx";
-import SinglePostScreen from "./pages/singlePost/SinglePostScreen.tsx";
+import * as L from "@/components/lazy/LazyComponents.tsx";
 
 const router = createBrowserRouter([
   {
@@ -19,19 +14,19 @@ const router = createBrowserRouter([
   },
   {
     path: "/home",
-    element: <HomeScreen />,
+    element: <L.LazyHomeScreen /> 
   },
   {
     path: "/photos",
-    element: <PhotosScreen />,
+    element: <L.LazyPhotosScreen />,
   },
   {
     path: "/posts/:id",
-    element: <SinglePostScreen />,
+    element: <L.LazySinglePostScreen />,
   },
   {
     path: "*",
-    element: <ErrorScreen />,
+    element: <L.LazyErrorScreen />,
   },
 ]);
 

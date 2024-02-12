@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+const HomeLayout = styled.section`
+  width: 100vw;
+  background-color: orange;
+`;
+
 const HomeContainer = styled.section`
   width: 100%;
   min-height: 80vh;
@@ -25,10 +30,10 @@ const PosterLayout = styled.div`
 `;
 
 const Poster = styled.article`
-  width: 100%; 
+  width: 100%;
   padding: 10px;
   background-color: #e4ede6;
-  display: flex;  
+  display: flex;
 `;
 
 const Text = styled.div`
@@ -55,13 +60,13 @@ const Expand = styled.div`
 `;
 
 const Comments = styled.article`
-  width: 100%; 
+  width: 100%;
   padding: 10px;
   background-color: #e4ede6;
 `;
 
 const Comment = styled.div`
-  width: 90%; 
+  width: 90%;
   padding: 10px;
   background-color: #e4ede6;
   margin-top: 15px;
@@ -69,11 +74,18 @@ const Comment = styled.div`
   border-radius: 5px;
 
   & h5 {
-    font-size: 0.8rem; 
+    font-size: 0.8rem;
   }
-
 `;
 
-
-
-export { HomeContainer, Poster, Text, Author, Expand ,Comment, PosterLayout, Comments};
+export {
+  HomeContainer,
+  Poster,
+  Text,
+  Author,
+  Expand,
+  Comment,
+  PosterLayout,
+  Comments,
+  HomeLayout
+};

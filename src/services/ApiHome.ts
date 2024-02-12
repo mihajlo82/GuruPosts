@@ -1,14 +1,16 @@
-import { ISingePost, IUser } from "@/utils/types/types";
+import { BASE_URL } from "@/utils/constants";
+import { IHome } from "@/utils/types/service/IHome";
+import { IComment, ISingePost, IUser } from "@/utils/types/typesHome";
 import axios from "axios";
 
-export class Api {
+export class ApiHome implements IHome {
   baseUrl;
 
   constructor() {
-    this.baseUrl = "https://jsonplaceholder.typicode.com";
+    this.baseUrl = BASE_URL;
   }
 
-  getPostsAndUsers = async () => {
+  getPostsAndUsers = async (): Promise<ISingePost[] | null> => {
     try {
       const [postsResponse, usersResponse] = await Promise.all([
         axios.get(`${this.baseUrl}/posts`),
@@ -29,7 +31,9 @@ export class Api {
     }
   };
 
-  searchPostsAndUsers = async (searchString: string) => {
+  searchPostsAndUsers = async (
+    searchString: string
+  ): Promise<ISingePost[] | null> => {
     try {
       const unfilteredPosts = await this.getPostsAndUsers();
       if (!unfilteredPosts) {
@@ -44,7 +48,7 @@ export class Api {
     }
   };
 
-  getCommentsFromPost = async (postId: number) => {
+  getCommentsFromPost = async (postId: number): Promise<IComment[] | null> => {
     try {
       const comments = await axios.get(
         `${this.baseUrl}/comments?postId=${postId}`
@@ -55,7 +59,7 @@ export class Api {
     }
   };
 
-  getSinglePost = async (postId: number) => {
+  getSinglePost = async (postId: number): Promise<ISingePost | null> => {
     try {
       if (!postId) {
         throw new Error("Parameter Not Valid!");
