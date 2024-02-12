@@ -20,10 +20,12 @@ const SinglePostLayout = styled.section`
   & h1{
     font-style: italic;
     margin-top: 25px;
+    padding: 5px;
   }
 
   & p {
-    margin-top: 30px
+    margin-top: 30px;
+    padding: 10px
   }
 `;
 export { SinglePostLayout };
