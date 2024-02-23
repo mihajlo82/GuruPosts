@@ -1,7 +1,6 @@
 import * as S from "./HeaderStyle";
 import logo from "@/assets/logo.jpg";
 import NavigationMenu from "../navigation/NavigationMenu";
-
 const Header = () => {
   return (
     <S.HeaderLayout>

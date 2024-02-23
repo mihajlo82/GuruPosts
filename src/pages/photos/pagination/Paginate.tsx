@@ -1,3 +1,4 @@
+import React from "react";
 import ReactPaginate from "react-paginate";
 import './paginate.css';
 
@@ -6,6 +7,7 @@ interface IPaginated {
   onPageChange: (e:any) => Promise<void>
 }
 const PaginatedItems = ({ totalPagesNo, onPageChange }: IPaginated) => { 
+  console.log("PaginatedItems RENDER")
 
   return (
     <section className="paginate__layout"> 
@@ -23,7 +25,7 @@ const PaginatedItems = ({ totalPagesNo, onPageChange }: IPaginated) => {
     </section>
   );
 }
-export default PaginatedItems;
+export default React.memo(PaginatedItems);
 
 PaginatedItems.defaultProps = {
     totalPagesNo: 0, 

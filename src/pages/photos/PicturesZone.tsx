@@ -1,3 +1,4 @@
+import React from "react";
 import { IPhoto } from "@/utils/types/typesPhotos";
 import * as S from "./PhotosStyled";
 
@@ -20,7 +21,7 @@ const PicturesZone = ({ photos }: IPicZone) => {
   );
 };
 
-export default PicturesZone;
+export default React.memo(PicturesZone);
 PicturesZone.defaultProps = {
-    photos: []
-}
+  photos: [],
+};

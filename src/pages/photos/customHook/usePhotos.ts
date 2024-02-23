@@ -1,6 +1,6 @@
 import { APIPhotos } from "@/services/ApiPhotos";
 import { IPhoto } from "@/utils/types/typesPhotos";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 
 const photosService = new APIPhotos();
 
@@ -30,7 +30,7 @@ const usePhotosReducer = () => {
     }
   };
 
-  const onPageChange = async (e: any) => {
+  const onPageChange = useCallback(async (e: any) => {
     if (!e?.selected && +e.selected !== 0)
       return window.alert("Pagination error!");
     setLoader(true);
@@ -46,7 +46,7 @@ const usePhotosReducer = () => {
     }
 
     setPhotos(fetchedPhotos.photos);
-  };
+  }, [totalPagesNo]);
 
   useEffect(() => {
     setLoader(false);
