@@ -3,6 +3,7 @@ import Input from "@/components/input/Input";
 import { ILimitGenerator } from "@/utils/types/typesPhotos";
 import { useState } from "react";
 import styled from "styled-components";
+import React from "react";
 
 const LimitGenLayout = styled.section`
   width: 100%;
@@ -35,7 +36,7 @@ const LimitGenerator = ({ onGenerateLimit }: ILimitGenerator) => {
   );
 };
 
-export default LimitGenerator;
+export default React.memo(LimitGenerator);
 LimitGenerator.defaultProps = {
   onGenerateLimit: () => {},
 };
